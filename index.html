@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="SpeechBind: Connecting All Co-Speech Modalities with Self-Supervised Speech Discrete Units">
-  <meta property="og:title" content="SpeechBind: Connecting All Co-Speech Modalities with Self-Supervised Speech Discrete Units"/>
+  <meta name="description" content="SyncTalklip">
+  <meta property="og:title" content="SyncTalklip"/>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">    
   
-  <title>SpeechBind: Connecting All Co-Speech Modalities with Self-Supervised Speech Discrete Units</title>
+  <title>SyncTalklip</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -37,8 +37,8 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-              <h1 id="co-speech-modalities" class="title is-1 publication-title">SpeechBind: Connecting All Co-Speech Modalities</h1>
-              <h1 class="title is-1 publication-title">with Self-Supervised Speech Discrete Units</h1>
+              <h1 id="co-speech-modalities" class="title is-1 publication-title">SyncTalklip</h1>
+              <!-- <h1 class="title is-1 publication-title">with Self-Supervised Speech Discrete Units</h1> -->
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
                 <p>
-Multimodal communication involves intricate interactions across various modalities, necessitating a profound understanding not only of audio speech but also of co-speech modal data such as talking head movements, co-speech gestures, subtitles, etc., to gain comprehensive insights. However, the scarcity of co-speech modality corpora hampers research in this area. In this paper, we introduce \textsc{SpeechBind} to seamlessly integrate all co-speech modalities with speech discrete units. These units are derived from SSL models pre-trained on a large number of audio speech and can comprehensively encompass most of the information present in (co-)speech modality. By employing them as a guide, we achieve faster, more reliable, and data-efficient co-speech representation learning. Furthermore, we leverage discrete units as a medium to achieve zero-shot alignment between any (co-)speech modalities, enhancing speech robustness for tasks lacking paired data. Finally, we explore the transfer of speech knowledge to co-speech modalities, including the transfer of cross-language mapping knowledge from audio speech to talking heads. Experiments demonstrate that \textsc{SpeechBind} effectively binds all (co-)speech modalities using discrete units, unlocking numerous novel capabilities.
+                    "Talking face generation" (TFG) has high requirements for accurate, natural, and synchronized videos, and taking into account each specific is a great challenge. In this paper, we propose SyncTalklip, a novel network framework that aims to address the challenges of synchronization and lip-reading performance in TFG tasks. By deeply analyzing the interaction mechanism between visual and auditory information, our approach not only ensures tight synchronization between the input speech and the generated visual content, but also accurately reflects the true meaning of the linguistic content. We introduce SyncAvhubert, a model that combines the advantages of semantic-level alignment and temporal alignment, which effectively avoids the problem of subtle lip synchronization by bringing audio and video representations closer together in an abstract distance space while enhancing the personalized features of the generated images. Experimental results show that SyncTalklip outperforms existing methods on several evaluation metrics, demonstrating its superiority in generating accurate, natural, and synchronized talking heads. In addition, our study emphasizes the importance of considering how audiovisual information integrally affects audience perception and understanding during TFG content creation or evaluation.Experiments demonstrates that our approach outperforms existing state-of-the-art (SOTA) techniques.
                 </p>
             </div>
         </div>
@@ -63,526 +63,266 @@ Multimodal communication involves intricate interactions across various modaliti
     </div>
   </section>
 
+
+  <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .image-container {
+            width: 100%; /* 图片容器占满整个父元素的宽度 */
+            margin-top: 25px; /* 图片向下移动20像素 */
+            text-align: center; /* 如果图片未能填充容器，将其在容器中居中 */
+        }
+        .image-container img {
+            width: 40%; /* 图片宽度占满整个容器 */
+            height: auto; /* 图片高度自动调整以保持纵横比 */
+        }
+    </style>
+    </head>
+    <body>
+    
+    <div class="text-content">
+        <!-- 这里是您页面上的文本内容 -->
+    </div>
+    
+    <div class="image-container">
+        <!-- 图片的路径应替换为您的图片实际路径 -->
+        <img src="Supplementary_Material/MM.png" alt="图">
+    </div>
+    
+    </body>
+    </html>
+
+
+
+
+  <!-- <html>
+  <head>
+      <style>
+          .center-image {
+              display: flex;
+              justify-content: center;
+          }
+      </style>
+  </head>
+  <body>
+  <div class="center-image">
+      <img src="D:/desk/speechbind.github.io-main/speechbind.github.io-main/Supplementary_Material/MM.png" alt="描述文本">
+  </div>
+  </body>
+  </html> -->
+
+
+
     <!-- Table of Contents -->
 
-  <section class="hero">
-    <div class="hero-body">
-        <div class="container">
-          <h1 class="title is-3">SpeechBind</h1>
-            <h2><a href="#unit-based-synthesis">A.Unit-Based Synthesis for Co-Speech Modalities.</a></h2>
-            <li><a href="#Talking_Head">A.1 Talking Head & Lip movements</a></li>
-            <li><a href="#LandMark">A.2 3D LandMark</a></li>
-            <li><a href="#Gesture">A.3 Co-Speech Gesture</a></li>
-            <li><a href="#Mesh">A.4 Mesh</a></li>
-
-            <h2><a href="#Zero_Shot">B.Zero-Shot Synthesis for Novel Modal Pairs.</a></h2>
-
-            <li><a href="#Speech_Denoising">B.1 Visually Guided High-Fidelity Speech Denoising</a></li>
-            <li><a href="#Talking_Head_Translation">B.2 Zero-Shot Talking Head Translation</a></li>
+  <section class="hero"><!-- 开始一个带有"hero"类的section元素，用于创建主要的内容区块 -->
+    <div class="hero-body"><!-- 内部的div元素，用于包裹"hero"区块的主体内容 --> 
+        <div class="container"><!-- 另一个div元素，带有"container"类，可能是为了布局或样式而使用的 -->
+          <h1 class="title is-3">SyncTalklip</h1><!-- 另一个div元素，带有"container"类，可能是为了布局或样式而使用的 -->
+            <li><a href="#other_model">Comparison of SyncTalklip with other models</a></li><!-- 链接到"#Mesh"部分，内容为"A.4 Mesh" -->
+            <li><a href="#other_method">Ablation and Extension of SyncTalklip</a></li>
           </ul>
         </div>
     </div>
   </section>
 
 
-  <section class="hero">
-      <div class="hero-body">
-          <div class="container">
-          <h1 id="unit-based-synthesis" class="title is-3">A.Unit-Based Synthesis for Co-Speech Modalities.</h1>
-              <h4 id="Talking_Head" class="title is-4">A.1 Talking Head & Lip movements</h4>
-              <div class="grid-container">
+  <section class="hero"><!-- 开始一个带有"hero"类的区块，通常用于页面顶部的主要内容展示 -->
+      <div class="hero-body"><!-- 包裹"hero"区块的主体内容 -->
+          <div class="container"><!-- 定义一个容器，用于布局或样式控制 -->
+          <h1 id="other_model" class="title is-3">Comparison of SyncTalklip with other models</h1>
+              <div class="grid-container"><!-- 定义表格的第一行，用于放置表头 --> 
                   <table >
                       <tr >
-                        <th>Driving Audio</th>
-                        <th>Audio2X</th>
-                        <th>U2S+S2X</th>
-                        <th>U2X</th>
+                        <th>GroundTruth</th>
+                        <th>Wav2Lip</th><!-- 定义表头单元格，内容为"Driving Audio" -->
+                        <th>TalkLip</th>
+                        <th>SyncTalklip</th>
 
+                      </tr>
+
+                      <tr ><!-- 定义表格的第二行，用于放置数据 --> 
+                          <th style=" vertical-align:middle;"><!-- 定义表头单元格，并设置垂直对齐方式为居中 -->
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Groundtruth/00008.mp4"></video> <!-- 在单元格中嵌入一个带有控制条的视频，视频宽度设置为200像素，视频源文件路径为"Supplementary_Material/TalkingHead/sample1/GT.mp4" -->
+                          </th>
+                          <th style=" vertical-align:middle;">
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00008.mp4"></video>
+                          </th>
+                          <th style=" vertical-align:middle;">
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Talklip/00008.mp4"></video>
+                          </th>
+                          <th style=" vertical-align:middle;">
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip/6334149478615670679_00008.mp4"></video>
+                        </th>
                       </tr>
 
                       <tr >
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample1/GT.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Groundtruth/00009.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample1/Audio2X.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00009.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample1/U2S+S2X.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Talklip/00009.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample1/U2X.mp4"></video>
-                          </th>
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip/6332804294858562278_00009.mp4"></video>
+                        </th>
                       </tr>
 
                       <tr >
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample2/GT.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Groundtruth/00025.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample2/Audio2X.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00025.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample2/U2S+S2X.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Talklip/00025.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample2/U2X.mp4"></video>
-                          </th>
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip/6331733559511729306_00025.mp4"></video>
+                        </th>
                       </tr>
 
                       <tr >
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample3/GT.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Groundtruth/00011.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample3/Audio2X.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00011.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample3/U2S+S2X.mp4"></video>
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/Talklip/00011.mp4"></video>
                           </th>
                           <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample3/U2X.mp4"></video>
-                          </th>
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip/6332491191742745853_00011.mp4"></video>
+                        </th>
                       </tr>
 
                       <tr >
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample4/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample4/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample4/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/TalkingHead/sample4/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-
-                  </table>
-              </div>
-              <br>
-
-              <h4 id="LandMark" class="title is-4">A.2 3D LandMark</h4>
-              <div class="grid-container">
-                  <table >
-                      <tr >
-                          <th>Ground Truth</th>
-                          <th>Audio2X</th>
-                          <th>U2S+S2X</th>
-                          <th>U2X</th>
-                      </tr>
-
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample1/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample1/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample1/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample1/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample2/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample2/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample2/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample2/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample3/GT.mp4"></video>
-                          </th>
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample3/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample3/U2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample3/U2S+S2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample4/GT.mp4"></video>
-                          </th>
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample4/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample4/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 200px;"><source src="Supplementary_Material/Ldmk/sample4/U2X.mp4"></video>
-                          </th>
-                      </tr>
-                  </table>
-              </div>
-              <br>
-
-              <h4 id="Gesture" class="title is-4">A.3 Co-Speech Gesture</h4>
-              <div class="grid-container">
-                  <table >
-                      <tr >
-                          <th>Audio2X</th>
-                          <th>U2S+S2X</th>
-                          <th>U2X</th>
-                      </tr>
-
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample1/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample1/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample1/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample2/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample2/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample2/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample3/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample3/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample3/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample4/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample4/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 300px;"><source src="Supplementary_Material/Gesture/sample4/U2X.mp4"></video>
-                          </th>
-                      </tr>
-                  </table>
-              </div>
-              <br>
-
-              <h4 id="Mesh" class="title is-4">A.4 Mesh</h4>
-              <div class="grid-container">
-                  <table >
-                      <tr >
-                          <th>Driving Audio</th>
-                          <th>Ground Truth</th>
-                          <th>Audio2X</th>
-                          <th>U2S+S2X</th>
-                          <th>U2X</th>
-                      </tr>
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <audio  controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample1/audio.wav" type="audio/wav"></audio>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample1/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample1/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample1/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample1/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-                          <th style=" vertical-align:middle;">
-                              <audio  controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample2/audio.wav"          type="audio/wav"></audio>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample2/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample2/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample2/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample2/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-
-                      <tr >
-                          <th style=" vertical-align:middle;">
-                              <audio  controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample3/audio.wav" type="audio/wav"></audio>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample3/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample3/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample3/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample3/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                      <tr >
-
-                          <th style=" vertical-align:middle;">
-                              <audio  controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample4/audio.wav"          type="audio/wav"></audio>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample4/GT.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample4/Audio2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample4/U2S+S2X.mp4"></video>
-                          </th>
-                          <th style=" vertical-align:middle;">
-                              <video controls style="width: 150px;"><source src="Supplementary_Material/Mesh/sample4/U2X.mp4"></video>
-                          </th>
-                      </tr>
-
-                  </table>
-              </div>
-              <br>
-          </div>
-
-          <br><br>
-          <div class="container">
-          <h1 id="Zero_Shot" class="title is-3">B.Zero-Shot Synthesis for Novel Modal Pairs.</h1>
-              <h4 id="Speech_Denoising" class="title is-4">B.1 Visually Guided High-Fidelity Speech Denoising</h4>
-              <div class="grid-container">
-                  <table >
-                      <tr >
-                          <th>SNR</th>
-                          <th>Target.Audio</th>
-                          <th>Inp.Audio</th>
-                          <th>RESYNTHESIS</th>
-                          <th>ReVISE</th>
-                          <th>SpeechBind(ours)</th>
-                      </tr>
-
-
-                    <tr >
-                        <th style=" vertical-align:middle;" width="10%">SNR = 15</th>
                         <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=15/ori.mp4"></video>
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/Groundtruth/00012.mp4"></video>
                         </th>
                         <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=15/noise_audio.mp4"></video>
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00012.mp4"></video>
                         </th>
                         <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=15/resynth.mp4"></video>
+                            <video controls style="width: 200px;"><source src="Supplementary_Material/Talklip/00012.mp4"></video>
                         </th>
                         <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=15/revise.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=15/SpeechBind.mp4"></video>
-                        </th>
-                    </tr>
-
-                    <tr >
-                        <th style=" vertical-align:middle;" width="10%">SNR = 5</th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=5/ori.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=5/noise_audio.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=5/resynth.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=5/revise.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=5/SpeechBind.mp4"></video>
-                        </th>
-                    </tr>
-
-                    <tr >
-                        <th style=" vertical-align:middle;" width="10%">SNR = -5</th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-5/ori.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-5/noise_audio.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-5/resynth.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-5/revise.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-5/SpeechBind.mp4"></video>
-                        </th>
-                    </tr>
-
-                    <tr >
-                        <th style=" vertical-align:middle;" width="10%">SNR = -15</th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-15/ori.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-15/noise_audio.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-15/resynth.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-15/revise.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B1/SNR=-15/SpeechBind.mp4"></video>
-                        </th>
+                          <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip/6333175380032936690_00012.mp4"></video>
+                      </th>
                     </tr>
                   </table>
-              </div>
-              <br>
 
-              <h4 id="Talking_Head_Translation" class="title is-4">B.2 Zero-Shot Talking Head Translation</h4>
-              <div class="grid-container">
-                  <table >
-                    <tr >
-                        <th></th>
-                        <th>Source Speech(A)</th>
-                        <th>Target Speech(AV)</th>
-                        <th>AVSR+NMT+TTS+Wav2Lip</th>
-                        <th>S2ST+Wav2Lip</th>
-                        <th>SpeechBind(ours)</th>
-                    </tr>
-                    <tr >
-                        <th style=" vertical-align:middle;"  width="10%">Es-En</th>
-                        <th style=" vertical-align:middle;">
-                            <audio  controls style="width: 150px;"><source src="Supplementary_Material/B2/es-en/source_audio.wav"          type="audio/wav"></audio>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/es-en/target.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/es-en/NMT.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/es-en/S2ST_wav2lip.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/es-en/speechbind.mp4"></video>
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style=" vertical-align:middle;">Ref/AVSR</th>
-                        <th style=" vertical-align:middle;">
-                            Así que el agua era algo que me asustaba para empezar
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            So water was something that scared me to begin with
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            So water was something that scared me in the beginning
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            so the water was something that was scaring me to start with
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            so the water was something that was scaring me to start with
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style=" vertical-align:middle;">Fr-En</th>
-                        <th style=" vertical-align:middle;">
-                            <audio  controls style="width: 150px;"><source src="Supplementary_Material/B2/fr-en/source_audio.wav"          type="audio/wav"></audio>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/fr-en/target.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/fr-en/NMT.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/fr-en/S2ST_wav2lip.mp4"></video>
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            <video controls style="width: 150px;"><source src="Supplementary_Material/B2/fr-en/speechbind.mp4"></video>
-                        </th>
-                    </tr>
-                    </tr>
-                    <tr >
-                        <th style=" vertical-align:middle;">Ref/AVSR</th>
-                        <th style=" vertical-align:middle;">
-                            No fuimos considerados la cosa real
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            we weren't considered the real thing
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            We were not considered the real thing
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            we were not considered as the real thing
-                        </th>
-                        <th style=" vertical-align:middle;">
-                            we were not considered as the real thing
-                        </th>
-                    </tr>
-                  </table>
+
+            
               </div>
-              <br>
-              <br>
-          </div>
+              <br><!--换行-->
+
+
+
+              <div class="container"><!-- 定义一个容器，用于布局或样式控制 -->
+                <h1 id="other_method" class="title is-3">Ablation and Extension of SyncTalklip</h1>
+                    <div class="grid-container"><!-- 定义表格的第一行，用于放置表头 --> 
+                        <table >
+                            <tr >
+                              <th>w/o sync</th><!--nosync-->
+                              <th>w/o lipreading</th><!-- wav2lip -->
+                              <th>conv</th>
+                              <th>freeze</th>
+      
+                            </tr>
+      
+                            <tr ><!-- 定义表格的第二行，用于放置数据 --> 
+                                <th style=" vertical-align:middle;"><!-- 定义表头单元格，并设置垂直对齐方式为居中 -->
+                                    <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_nosync/00008.mp4"></video> <!-- 在单元格中嵌入一个带有控制条的视频，视频宽度设置为200像素，视频源文件路径为"Supplementary_Material/TalkingHead/sample1/GT.mp4" -->
+                                </th>
+                                <th style=" vertical-align:middle;">
+                                    <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00008.mp4"></video>
+                                </th>
+                                <th style=" vertical-align:middle;">
+                                    <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip(conv)/00008.mp4"></video>
+                                </th>
+                                <th style=" vertical-align:middle;">
+                                  <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_freeze/00008.mp4"></video>
+                              </th>
+                            </tr>
+      
+                            <tr >
+                              <th style=" vertical-align:middle;">
+                                  <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_nosync/00009.mp4"></video> 
+                              </th>
+                              <th style=" vertical-align:middle;">
+                                  <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00009.mp4"></video>
+                              </th>
+                              <th style=" vertical-align:middle;">
+                                  <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip(conv)/00009.mp4"></video>
+                              </th>
+                              <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_freeze/00009.mp4"></video>
+                              </th>
+                            </tr>
+      
+                          <tr >
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_nosync/00011.mp4"></video> 
+                            </th>
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00011.mp4"></video>
+                            </th>
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip(conv)/00011.mp4"></video>
+                            </th>
+                            <th style=" vertical-align:middle;">
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_freeze/00011.mp4"></video>
+                            </th>
+                          </tr>
+      
+                          <tr >
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_nosync/00012.mp4"></video> 
+                            </th>
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00012.mp4"></video>
+                            </th>
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip(conv)/00012.mp4"></video>
+                            </th>
+                            <th style=" vertical-align:middle;">
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_freeze/00012.mp4"></video>
+                            </th>
+                          </tr>
+      
+                          <tr >
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_nosync/00025.mp4"></video> 
+                            </th>
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/Wav2lip/00025.mp4"></video>
+                            </th>
+                            <th style=" vertical-align:middle;">
+                                <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip(conv)/00025.mp4"></video>
+                            </th>
+                            <th style=" vertical-align:middle;">
+                              <video controls style="width: 200px;"><source src="Supplementary_Material/SyncTalklip_freeze/00025.mp4"></video>
+                            </th>
+                          </tr>
+                        </table>
+      
+      
+                  
+                    </div>
+                    <br><!--换行-->
+
+
+
+
       </div>
-
-
   </section>
 
 
